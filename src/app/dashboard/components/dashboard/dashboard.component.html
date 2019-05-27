@@ -1,0 +1,18 @@
+<mat-grid-list
+    cols="4"
+    rowHeight="2:1"
+    gutterSize="15px"
+    *ngIf="tiles$ | async as tiles"
+>
+    <ng-container *ngFor="let tile of tiles">
+        <mat-grid-tile class="pricer">
+            <cf-tile [tile]="tile"></cf-tile>
+        </mat-grid-tile>
+    </ng-container>
+
+    <mat-grid-tile>
+        <button mat-icon-button (click)="addTile(tiles.length)">
+            <mat-icon color="accent">add</mat-icon>
+        </button>
+    </mat-grid-tile>
+</mat-grid-list>

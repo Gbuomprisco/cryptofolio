@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~@angular/material/theming';
+
+@include mat-core();
+$mat-dark-theme-background: map-merge($mat-dark-theme-background, (
+    card: #222
+));
+
+$primary: mat-palette($mat-deep-purple);
+$accent: mat-palette($mat-red, A200, A100, A400);
+$theme: mat-dark-theme($primary, $accent);
+
+@include angular-material-theme($theme);
+
+$dark-primary: mat-palette($mat-blue, 700, 500, 900);
+$dark-accent: mat-palette($mat-gray, A200, A100, A400);
+$dark-warn: mat-palette($mat-deep-orange);
+
+$dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+@include angular-material-theme($dark-theme);
+@include mat-button-theme($dark-theme);
+@include mat-checkbox-theme($dark-theme);
+
+html, body {
+    background: #121212;
+    height: 100%;
+    font-family: "Roboto";
+    color: map-get($mat-dark-theme-foreground, base);
+}

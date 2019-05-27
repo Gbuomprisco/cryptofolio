@@ -1,0 +1,19 @@
+<div [ngSwitch]="tile.assetId" fxLayout="column">
+    <div class="tile-header">
+        <div class="tile-heading" *ngSwitchDefault>
+            {{ tile.assetId | titlecase }}
+        </div>
+
+        <cf-asset-selector
+            *ngSwitchCase="undefined"
+            (assetSelected)="updateTile($event)"
+        ></cf-asset-selector>
+    </div>
+
+   <div class="tile-content" fxFlexAlign="center center">
+       <cf-asset-pricer
+           *ngSwitchDefault
+           [asset]="tile.assetId">
+       </cf-asset-pricer>
+   </div>
+</div>

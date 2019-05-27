@@ -1,0 +1,16 @@
+<div class="price-container">
+    <div class="price"
+         *ngIf="(price$ | async) as price; else showEmptyState"
+         [ngClass]="{
+            'trend-up': (trend$ | async) === trends.Up,
+            'trend-down': (trend$ | async) === trends.Down
+         }"
+    >
+        ${{ price }}
+    </div>
+
+    <ng-template #showEmptyState>
+        <mat-spinner></mat-spinner>
+    </ng-template>
+</div>
+

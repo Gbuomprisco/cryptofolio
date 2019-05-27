@@ -7,7 +7,7 @@
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "app",
+      "prefix": "cf",
       "schematics": {},
       "architect": {
         "build": {
@@ -23,12 +23,20 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": [],
             "es5BrowserSupport": true
           },
           "configurations": {
+            "dev": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
+                }
+              ]
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -63,6 +71,9 @@
           "configurations": {
             "production": {
               "browserTarget": "cryptofolio:build:production"
+            },
+            "dev": {
+              "browserTarget": "cryptofolio:build:dev"
             }
           }
         },
@@ -80,7 +91,7 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": [],
             "assets": [
@@ -132,5 +143,10 @@
       }
     }
   },
-  "defaultProject": "cryptofolio"
+  "defaultProject": "cryptofolio",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

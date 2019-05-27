@@ -1,0 +1,11 @@
+<mat-form-field>
+    <mat-label>
+        Select Asset
+    </mat-label>
+
+    <mat-select (selectionChange)="assetSelected.next($event.value)">
+        <mat-option *ngFor="let asset of (assets$ | async)" [value]="asset.id">
+            {{ asset.name }}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
